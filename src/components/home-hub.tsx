@@ -87,7 +87,7 @@ export function HomeHub() {
     setBusy(true);
     setMailError(null);
     try {
-      const result = await listInbox({ data: { email, password } });
+      const result = await listInbox(email, password);
       if (!result.ok) {
         setMailError(result.error === "auth" ? t.mailBad : result.error === "domain" ? t.mailInvalid : t.mailDown);
         return;
@@ -109,7 +109,7 @@ export function HomeHub() {
     setBody("");
     setBodyBusy(true);
     try {
-      const result = await readMail({ data: { email: session.email, password: session.password, uid } });
+      const result = await readMail(session.email, session.password, uid);
       if (!result.ok) {
         setMailError(result.error === "auth" ? t.mailBad : t.mailDown);
         return;

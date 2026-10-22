@@ -1,5 +1,3 @@
-import { createServerFn } from "@tanstack/react-start";
-
 export type MailHeader = {
   uid: number;
   from: string;
@@ -9,28 +7,28 @@ export type MailHeader = {
 
 export type MailFailure = "domain" | "auth" | "down";
 
-type Creds = { email: string; password: string };
+export type MailListResult =
+  | { ok: true; messages: MailHeader[] }
+  | { ok: false; error: MailFailure };
 
-function creds(input: Creds): Creds {
-  return {
-    email: String(input?.email ?? "").slice(0, 200),
-    password: String(input?.password ?? "").slice(0, 500),
-  };
+export type MailReadResult =
+  | { ok: true; from: string; subject: string; date: string; text: string }
+  | { ok: false; error: MailFailure };
+
+async function postMail(body: { action: "list" | "read"; email: string; password: string; uid?: number }) {
+  const response = await fetch("/api/mail", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) return { ok: false as const, error: "down" as const };
+  return response.json();
 }
 
-export const listInbox = createServerFn({ method: "POST" })
-  .validator(creds)
-  .handler(async ({ data }) => {
-    const { listInboxImap } = await import("./mail.server");
-    return listInboxImap(data.email, data.password);
-  });
+export function listInbox(email: string, password: string): Promise<MailListResult> {
+  return postMail({ action: "list", email, password });
+}
 
-export const readMail = createServerFn({ method: "POST" })
-  .validator((input: Creds & { uid: number }) => ({
-    ...creds(input),
-    uid: Number(input?.uid),
-  }))
-  .handler(async ({ data }) => {
-    const { readMessageImap } = await import("./mail.server");
-    return readMessageImap(data.email, data.password, data.uid);
-  });
+export function readMail(email: string, password: string, uid: number): Promise<MailReadResult> {
+  return postMail({ action: "read", email, password, uid });
+}
