@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Mail, Moon, Save, Sun, UserRound } from "lucide-react";
-import { AVATAR_URL, normalizeMailbox, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
+import { ArrowUpRight, Mail, Moon, Save, Search, Sun, UserRound } from "lucide-react";
+import { AVATAR_URL, normalizeMailbox, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
 import { listInbox, readMail, type MailHeader } from "@/lib/mail";
 import { copy, detectLang, isLang, languageOptions, RTL, type Lang } from "@/lib/messages";
 
@@ -9,17 +9,27 @@ type Session = { email: string; password: string };
 
 const toolIcon = {
   avatar: UserRound,
+  titles: Search,
   saves: Save,
 } as const;
 
 function toolName(lang: Lang, id: ToolId) {
   const t = copy[lang];
-  return id === "avatar" ? t.avatarName : t.savesName;
+  if (id === "avatar") return t.avatarName;
+  if (id === "titles") return t.titlesName;
+  return t.savesName;
 }
 
 function toolBody(lang: Lang, id: ToolId) {
   const t = copy[lang];
-  return id === "avatar" ? t.avatarBody : t.savesBody;
+  if (id === "avatar") return t.avatarBody;
+  if (id === "titles") return t.titlesBody;
+  return t.savesBody;
+}
+
+function toolUrl(id: ToolId) {
+  if (id === "titles") return TITLE_URL;
+  return AVATAR_URL;
 }
 
 function applyLang(next: Lang) {
@@ -262,7 +272,7 @@ export function HomeHub() {
             <p className="panel mt-4 rounded-xl px-5 py-8 text-muted">{t.empty}</p>
           )}
 
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
             {visible.map((tool) => {
               const Icon = toolIcon[tool.id];
               const on = active?.id === tool.id;
@@ -346,10 +356,10 @@ function ToolDetail({ lang, id, status }: { lang: Lang; id: ToolId; status: Tool
           <p className="mt-2 leading-relaxed text-muted">{toolBody(lang, id)}</p>
           {status === "live" ? (
             <a
-              href={AVATAR_URL}
+              href={toolUrl(id)}
               className="mt-5 inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-4 font-medium text-accent-fg"
             >
-              {t.openTool}
+              {id === "titles" ? t.titlesOpen : t.openTool}
               <ArrowUpRight className="size-4" />
             </a>
           ) : (

@@ -2,6 +2,7 @@ const shared = {
   brand: "consolecheat",
   mailKicker: "Webmail",
   avatarName: "Avatar Adder",
+  titlesName: "Title ID Finder",
   savesName: "PS4 Saves",
   moreSoon: "More soon",
 } as const;
@@ -83,6 +84,8 @@ type Text = {
   priceFirst: string;
   footerNote: string;
   avatarBody: string;
+  titlesBody: string;
+  titlesOpen: string;
   savesBody: string;
 };
 
@@ -129,6 +132,8 @@ const en: Text = {
   footerNote: "You pay on PlayStation. This site is not Sony.",
   avatarBody: "Free and paid avatars into the PlayStation cart. The cookie stays in the tab. You pay on PlayStation, not here.",
   savesBody: "PS4 game saves to download from this hub, later.",
+  titlesBody: "Look up a PlayStation title ID.",
+  titlesOpen: "Open Title ID Finder",
 };
 
 function pack(text: Text): Copy {
@@ -178,6 +183,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Bezahlt wird bei PlayStation. Diese Seite ist nicht Sony.",
     avatarBody: "Gratis und kostenpflichtig in den PlayStation-Warenkorb. Das Cookie bleibt im Tab. Bezahlt wird bei PlayStation, nicht hier.",
     savesBody: "PS4-Spielstände, die man später hier herunterladen kann.",
+    titlesBody: "Eine PlayStation-Title-ID nachschlagen.",
+    titlesOpen: "Zum Title ID Finder",
   }),
   fr: pack({
     mailHint: "Uniquement @consolecheat.com. La connexion vérifie la boîte chez Purelymail. Le mot de passe n’est pas enregistré ici.",
@@ -220,6 +227,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Le paiement se fait sur PlayStation. Ce site n’est pas Sony.",
     avatarBody: "Avatars gratuits et payants dans le panier PlayStation. Le cookie reste dans l’onglet. Le paiement se fait sur PlayStation, pas ici.",
     savesBody: "Sauvegardes PS4 à télécharger ici, plus tard.",
+    titlesBody: "Trouver le Title ID d’un jeu PlayStation.",
+    titlesOpen: "Ouvrir le Title ID Finder",
   }),
   es: pack({
     mailHint: "Solo @consolecheat.com. El acceso comprueba el buzón en Purelymail. La contraseña no se guarda aquí.",
@@ -262,6 +271,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Se paga en PlayStation. Este sitio no es Sony.",
     avatarBody: "Avatares gratis y de pago al carrito de PlayStation. La cookie se queda en la pestaña. Se paga en PlayStation, no aquí.",
     savesBody: "Partidas de PS4 para descargar aquí más adelante.",
+    titlesBody: "Buscar el Title ID de un juego de PlayStation.",
+    titlesOpen: "Abrir Title ID Finder",
   }),
   pt: pack({
     mailHint: "Apenas @consolecheat.com. A entrada verifica a caixa no Purelymail. A palavra-passe não fica guardada aqui.",
@@ -304,6 +315,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "O pagamento é na PlayStation. Este site não é a Sony.",
     avatarBody: "Avatares grátis e pagos no carrinho da PlayStation. A cookie fica no separador. O pagamento é na PlayStation, não aqui.",
     savesBody: "Gravações de PS4 para transferir aqui mais tarde.",
+    titlesBody: "Procurar o Title ID de um jogo PlayStation.",
+    titlesOpen: "Abrir Title ID Finder",
   }),
   it: pack({
     mailHint: "Solo @consolecheat.com. L’accesso controlla la casella su Purelymail. La password non viene salvata qui.",
@@ -346,6 +359,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Si paga su PlayStation. Questo sito non è Sony.",
     avatarBody: "Avatar gratuiti e a pagamento nel carrello PlayStation. Il cookie resta nella scheda. Si paga su PlayStation, non qui.",
     savesBody: "Salvataggi PS4 da scaricare qui più avanti.",
+    titlesBody: "Cercare il Title ID di un gioco PlayStation.",
+    titlesOpen: "Apri Title ID Finder",
   }),
   nl: pack({
     mailHint: "Alleen @consolecheat.com. Inloggen controleert de mailbox bij Purelymail. Het wachtwoord wordt hier niet bewaard.",
@@ -388,6 +403,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Betalen doe je bij PlayStation. Deze site is niet Sony.",
     avatarBody: "Gratis en betaalde avatars in de PlayStation-winkelwagen. Het cookie blijft in het tabblad. Betalen doe je bij PlayStation, niet hier.",
     savesBody: "PS4-saves om hier later te downloaden.",
+    titlesBody: "Een PlayStation Title ID opzoeken.",
+    titlesOpen: "Naar Title ID Finder",
   }),
   pl: pack({
     mailHint: "Tylko @consolecheat.com. Logowanie sprawdza skrzynkę w Purelymail. Hasło nie jest tu zapisywane.",
@@ -430,6 +447,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Płatność jest na PlayStation. Ta strona to nie Sony.",
     avatarBody: "Darmowe i płatne awatary do koszyka PlayStation. Ciasteczko zostaje w karcie. Płatność jest na PlayStation, nie tutaj.",
     savesBody: "Zapisy gier PS4 do pobrania tutaj później.",
+    titlesBody: "Sprawdź Title ID gry na PlayStation.",
+    titlesOpen: "Otwórz Title ID Finder",
   }),
   sv: pack({
     mailHint: "Bara @consolecheat.com. Inloggningen kontrollerar brevlådan hos Purelymail. Lösenordet sparas inte här.",
@@ -472,6 +491,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Betalning sker på PlayStation. Den här sidan är inte Sony.",
     avatarBody: "Gratis och betalda avatarer till PlayStations kundvagn. Cookien stannar i fliken. Betalning sker på PlayStation, inte här.",
     savesBody: "PS4-sparfiler att ladda ner här senare.",
+    titlesBody: "Slå upp ett Title ID för PlayStation.",
+    titlesOpen: "Öppna Title ID Finder",
   }),
   da: pack({
     mailHint: "Kun @consolecheat.com. Login tjekker postkassen hos Purelymail. Adgangskoden gemmes ikke her.",
@@ -514,6 +535,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Der betales på PlayStation. Dette site er ikke Sony.",
     avatarBody: "Gratis og betalte avatarer i PlayStations kurv. Cookien bliver i fanen. Der betales på PlayStation, ikke her.",
     savesBody: "PS4-gem til download her senere.",
+    titlesBody: "Slå et PlayStation Title ID op.",
+    titlesOpen: "Åbn Title ID Finder",
   }),
   no: pack({
     mailHint: "Bare @consolecheat.com. Innlogging sjekker postkassen hos Purelymail. Passordet lagres ikke her.",
@@ -556,6 +579,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Betaling skjer på PlayStation. Dette nettstedet er ikke Sony.",
     avatarBody: "Gratis og betalte avatarer i PlayStation-handlekurven. Informasjonskapselen blir i fanen. Betaling skjer på PlayStation, ikke her.",
     savesBody: "PS4-lagringer å laste ned her senere.",
+    titlesBody: "Slå opp en PlayStation Title ID.",
+    titlesOpen: "Åpne Title ID Finder",
   }),
   fi: pack({
     mailHint: "Vain @consolecheat.com. Kirjautuminen tarkistaa postilaatikon Purelymailissa. Salasanaa ei tallenneta tänne.",
@@ -598,6 +623,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Maksu tapahtuu PlayStationilla. Tämä sivu ei ole Sony.",
     avatarBody: "Ilmaiset ja maksulliset avatarit PlayStationin koriin. Eväste pysyy välilehdessä. Maksu tapahtuu PlayStationilla, ei täällä.",
     savesBody: "PS4-tallennuksia ladattavaksi täältä myöhemmin.",
+    titlesBody: "Hae PlayStation-pelin Title ID.",
+    titlesOpen: "Avaa Title ID Finder",
   }),
   cs: pack({
     mailHint: "Jen @consolecheat.com. Přihlášení ověří schránku u Purelymail. Heslo se sem neukládá.",
@@ -640,6 +667,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Platí se na PlayStation. Tahle stránka není Sony.",
     avatarBody: "Avatary zdarma i placené do košíku PlayStation. Cookie zůstane v panelu. Platí se na PlayStation, ne tady.",
     savesBody: "Uložené pozice PS4 ke stažení tady později.",
+    titlesBody: "Vyhledat Title ID hry na PlayStation.",
+    titlesOpen: "Otevřít Title ID Finder",
   }),
   sk: pack({
     mailHint: "Len @consolecheat.com. Prihlásenie overí schránku v Purelymail. Heslo sa sem neukladá.",
@@ -682,6 +711,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Platí sa na PlayStation. Táto stránka nie je Sony.",
     avatarBody: "Avatary zadarmo aj platené do košíka PlayStation. Cookie zostane na karte. Platí sa na PlayStation, nie tu.",
     savesBody: "Uložené pozície PS4 na stiahnutie tu neskôr.",
+    titlesBody: "Vyhľadať Title ID hry na PlayStation.",
+    titlesOpen: "Otvoriť Title ID Finder",
   }),
   hu: pack({
     mailHint: "Csak @consolecheat.com. A belépés a Purelymail-postafiókot ellenőrzi. A jelszó itt nem tárolódik.",
@@ -724,6 +755,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "A fizetés a PlayStationön történik. Ez az oldal nem a Sony.",
     avatarBody: "Ingyenes és fizetős avatarok a PlayStation kosarába. A süti a lapon marad. A fizetés a PlayStationön történik, nem itt.",
     savesBody: "PS4-játékmentések, amiket később itt lehet letölteni.",
+    titlesBody: "PlayStation Title ID keresése.",
+    titlesOpen: "Title ID Finder megnyitása",
   }),
   ro: pack({
     mailHint: "Doar @consolecheat.com. Autentificarea verifică căsuța la Purelymail. Parola nu se salvează aici.",
@@ -766,6 +799,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Plata se face pe PlayStation. Site-ul acesta nu este Sony.",
     avatarBody: "Avatare gratuite și plătite în coșul PlayStation. Cookie-ul rămâne în filă. Plata se face pe PlayStation, nu aici.",
     savesBody: "Salvări PS4 de descărcat aici mai târziu.",
+    titlesBody: "Caută Title ID-ul unui joc PlayStation.",
+    titlesOpen: "Deschide Title ID Finder",
   }),
   bg: pack({
     mailHint: "Само @consolecheat.com. Входът проверява пощенската кутия в Purelymail. Паролата не се пази тук.",
@@ -808,6 +843,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Плаща се в PlayStation. Този сайт не е Sony.",
     avatarBody: "Безплатни и платени аватари в количката на PlayStation. Бисквитката остава в раздела. Плаща се в PlayStation, не тук.",
     savesBody: "Записи на PS4 игри за сваляне тук по-късно.",
+    titlesBody: "Намери Title ID на игра за PlayStation.",
+    titlesOpen: "Отвори Title ID Finder",
   }),
   hr: pack({
     mailHint: "Samo @consolecheat.com. Prijava provjerava sandučić na Purelymailu. Lozinka se ovdje ne sprema.",
@@ -850,6 +887,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Plaća se na PlayStationu. Ova stranica nije Sony.",
     avatarBody: "Besplatni i plaćeni avatari u košaricu PlayStationa. Kolačić ostaje u kartici. Plaća se na PlayStationu, ne ovdje.",
     savesBody: "PS4 spremanja za preuzimanje ovdje kasnije.",
+    titlesBody: "Pronađi Title ID igre za PlayStation.",
+    titlesOpen: "Otvori Title ID Finder",
   }),
   el: pack({
     mailHint: "Μόνο @consolecheat.com. Η σύνδεση ελέγχει το γραμματοκιβώτιο στην Purelymail. Ο κωδικός δεν αποθηκεύεται εδώ.",
@@ -892,6 +931,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Η πληρωμή γίνεται στο PlayStation. Αυτός ο ιστότοπος δεν είναι η Sony.",
     avatarBody: "Δωρεάν και επί πληρωμή avatar στο καλάθι του PlayStation. Το cookie μένει στην καρτέλα. Η πληρωμή γίνεται στο PlayStation, όχι εδώ.",
     savesBody: "Αποθηκεύσεις PS4 για λήψη εδώ αργότερα.",
+    titlesBody: "Βρες το Title ID ενός παιχνιδιού PlayStation.",
+    titlesOpen: "Άνοιγμα Title ID Finder",
   }),
   tr: pack({
     mailHint: "Yalnızca @consolecheat.com. Giriş, Purelymail kutusunu kontrol eder. Parola burada saklanmaz.",
@@ -934,6 +975,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Ödeme PlayStation’da. Bu site Sony değil.",
     avatarBody: "Ücretsiz ve ücretli avatarlar PlayStation sepetine. Çerez sekmede kalır. Ödeme PlayStation’da, burada değil.",
     savesBody: "Buradan sonra indirilecek PS4 kayıt dosyaları.",
+    titlesBody: "Bir PlayStation Title ID’si bul.",
+    titlesOpen: "Title ID Finder’ı aç",
   }),
   ru: pack({
     mailHint: "Только @consolecheat.com. Вход проверяет ящик в Purelymail. Пароль здесь не хранится.",
@@ -976,6 +1019,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Оплата на PlayStation. Этот сайт — не Sony.",
     avatarBody: "Бесплатные и платные аватары в корзину PlayStation. Cookie остаётся во вкладке. Оплата на PlayStation, не здесь.",
     savesBody: "Сохранения игр PS4, которые позже можно скачать здесь.",
+    titlesBody: "Найти Title ID игры для PlayStation.",
+    titlesOpen: "Открыть Title ID Finder",
   }),
   uk: pack({
     mailHint: "Лише @consolecheat.com. Вхід перевіряє скриньку в Purelymail. Пароль тут не зберігається.",
@@ -1018,6 +1063,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Оплата на PlayStation. Цей сайт — не Sony.",
     avatarBody: "Безкоштовні й платні аватари в кошик PlayStation. Cookie лишається у вкладці. Оплата на PlayStation, не тут.",
     savesBody: "Збереження ігор PS4, які пізніше можна завантажити тут.",
+    titlesBody: "Знайти Title ID гри для PlayStation.",
+    titlesOpen: "Відкрити Title ID Finder",
   }),
   ar: pack({
     mailHint: "فقط @consolecheat.com. تسجيل الدخول يتحقق من صندوق Purelymail. كلمة السر لا تُحفظ هنا.",
@@ -1060,6 +1107,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "الدفع على PlayStation. هذا الموقع ليس Sony.",
     avatarBody: "صور مجانية ومدفوعة إلى سلة PlayStation. يبقى ملف الارتباط في اللسان. الدفع على PlayStation، لا هنا.",
     savesBody: "حفظات ألعاب PS4 للتنزيل من هنا لاحقًا.",
+    titlesBody: "ابحث عن Title ID للعبة بلايستيشن.",
+    titlesOpen: "افتح Title ID Finder",
   }),
   he: pack({
     mailHint: "רק @consolecheat.com. ההתחברות בודקת את התיבה ב-Purelymail. הסיסמה לא נשמרת כאן.",
@@ -1102,6 +1151,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "התשלום ב-PlayStation. האתר הזה אינו Sony.",
     avatarBody: "אווטארים בחינם ובתשלום לעגלת PlayStation. העוגייה נשארת בלשונית. התשלום ב-PlayStation, לא כאן.",
     savesBody: "שמירות PS4 להורדה מכאן אחר כך.",
+    titlesBody: "חיפוש Title ID של משחק פלייסטיישן.",
+    titlesOpen: "פתיחת Title ID Finder",
   }),
   ja: pack({
     mailHint: "@consolecheat.com だけ。ログインは Purelymail のメールボックスを確認します。パスワードはここへ保存しません。",
@@ -1144,6 +1195,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "支払いは PlayStation 側です。このサイトは Sony ではありません。",
     avatarBody: "無料と有料のアバターを PlayStation のカートへ。Cookie はこのタブに残ります。支払いは PlayStation 側で、ここではしません。",
     savesBody: "あとからここでダウンロードできるPS4のセーブデータ。",
+    titlesBody: "PlayStation の Title ID を調べる。",
+    titlesOpen: "Title ID Finder を開く",
   }),
   ko: pack({
     mailHint: "@consolecheat.com 만 됩니다. 로그인은 Purelymail 사서함을 확인합니다. 비밀번호는 여기에 저장하지 않습니다.",
@@ -1186,6 +1239,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "결제는 PlayStation에서. 이 사이트는 Sony가 아닙니다.",
     avatarBody: "무료와 유료 아바타를 PlayStation 장바구니로. 쿠키는 이 탭에 남습니다. 결제는 PlayStation에서, 여기서가 아닙니다.",
     savesBody: "나중에 여기서 받을 PS4 세이브 데이터.",
+    titlesBody: "PlayStation Title ID를 찾습니다.",
+    titlesOpen: "Title ID Finder 열기",
   }),
   zh: pack({
     mailHint: "仅限 @consolecheat.com。登录会向 Purelymail 核对邮箱。密码不会保存在这里。",
@@ -1228,6 +1283,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "付款在 PlayStation。本站不是 Sony。",
     avatarBody: "把免费和付费头像放进 PlayStation 购物车。Cookie 留在这个标签页。付款在 PlayStation，不在这里。",
     savesBody: "之后可在这里下载的 PS4 游戏存档。",
+    titlesBody: "查找 PlayStation 游戏的 Title ID。",
+    titlesOpen: "打开 Title ID Finder",
   }),
   "zh-Hant": pack({
     mailHint: "只限 @consolecheat.com。登入會向 Purelymail 核對信箱。密碼不會留在這裡。",
@@ -1270,6 +1327,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "付款在 PlayStation。本站不是 Sony。",
     avatarBody: "把免費和付費頭像放進 PlayStation 購物車。Cookie 留在這個分頁。付款在 PlayStation，不在這裡。",
     savesBody: "之後可在這裡下載的 PS4 遊戲存檔。",
+    titlesBody: "查找 PlayStation 遊戲的 Title ID。",
+    titlesOpen: "開啟 Title ID Finder",
   }),
   th: pack({
     mailHint: "เฉพาะ @consolecheat.com เข้าสู่ระบบจะตรวจกล่องที่ Purelymail รหัสผ่านไม่ถูกเก็บที่นี่",
@@ -1312,6 +1371,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "ชำระเงินที่ PlayStation ไซต์นี้ไม่ใช่ Sony",
     avatarBody: "อวตารฟรีและเสียเงินเข้าตะกร้า PlayStation คุกกี้อยู่ในแท็บนี้ ชำระเงินที่ PlayStation ไม่ใช่ที่นี่",
     savesBody: "เซฟเกม PS4 ที่จะดาวน์โหลดจากที่นี่ภายหลัง",
+    titlesBody: "ค้น Title ID ของเกม PlayStation",
+    titlesOpen: "เปิด Title ID Finder",
   }),
   id: pack({
     mailHint: "Hanya @consolecheat.com. Masuk memeriksa kotak di Purelymail. Kata sandi tidak disimpan di sini.",
@@ -1354,6 +1415,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Pembayaran di PlayStation. Situs ini bukan Sony.",
     avatarBody: "Avatar gratis dan berbayar ke keranjang PlayStation. Cookie tetap di tab ini. Pembayaran di PlayStation, bukan di sini.",
     savesBody: "Simpanan game PS4 untuk diunduh di sini nanti.",
+    titlesBody: "Cari Title ID permainan PlayStation.",
+    titlesOpen: "Buka Title ID Finder",
   }),
   ms: pack({
     mailHint: "Hanya @consolecheat.com. Log masuk menyemak peti di Purelymail. Kata laluan tidak disimpan di sini.",
@@ -1396,6 +1459,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Bayaran di PlayStation. Laman ini bukan Sony.",
     avatarBody: "Avatar percuma dan berbayar ke troli PlayStation. Kuki kekal dalam tab ini. Bayaran di PlayStation, bukan di sini.",
     savesBody: "Simpanan permainan PS4 untuk dimuat turun di sini nanti.",
+    titlesBody: "Cari Title ID permainan PlayStation.",
+    titlesOpen: "Buka Title ID Finder",
   }),
   vi: pack({
     mailHint: "Chỉ @consolecheat.com. Đăng nhập kiểm tra hộp thư trên Purelymail. Mật khẩu không được lưu ở đây.",
@@ -1438,6 +1503,8 @@ export const copy: Record<Lang, Copy> = {
     footerNote: "Thanh toán trên PlayStation. Trang này không phải Sony.",
     avatarBody: "Avatar miễn phí và trả phí vào giỏ PlayStation. Cookie ở lại tab này. Thanh toán trên PlayStation, không phải ở đây.",
     savesBody: "File lưu game PS4 để tải về tại đây sau.",
+    titlesBody: "Tra Title ID của game PlayStation.",
+    titlesOpen: "Mở Title ID Finder",
   }),
 };
 
