@@ -1,4 +1,4 @@
-export type ToolId = "avatar" | "titles" | "saves";
+export type ToolId = "avatar" | "titles" | "saves" | "pricing";
 export type ToolStatus = "live" | "soon";
 
 export const AVATAR_URL = "https://avatar.consolecheat.com/";
@@ -9,6 +9,7 @@ export const tools: { id: ToolId; status: ToolStatus }[] = [
   { id: "avatar", status: "live" },
   { id: "titles", status: "live" },
   { id: "saves", status: "soon" },
+  { id: "pricing", status: "soon" },
 ];
 
 const LOCAL = /^[a-z0-9._+-]{1,64}$/;

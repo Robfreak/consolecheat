@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Mail, Moon, Save, Search, Sun, UserRound } from "lucide-react";
+import { ArrowUpRight, BadgePercent, Mail, Moon, Save, Search, Sun, UserRound } from "lucide-react";
 import { AVATAR_URL, normalizeMailbox, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
 import { listInbox, readMail, type MailHeader } from "@/lib/mail";
 import { copy, detectLang, isLang, languageOptions, RTL, type Lang } from "@/lib/messages";
@@ -11,12 +11,14 @@ const toolIcon = {
   avatar: UserRound,
   titles: Search,
   saves: Save,
+  pricing: BadgePercent,
 } as const;
 
 function toolName(lang: Lang, id: ToolId) {
   const t = copy[lang];
   if (id === "avatar") return t.avatarName;
   if (id === "titles") return t.titlesName;
+  if (id === "pricing") return t.pricingName;
   return t.savesName;
 }
 
@@ -24,6 +26,7 @@ function toolBody(lang: Lang, id: ToolId) {
   const t = copy[lang];
   if (id === "avatar") return t.avatarBody;
   if (id === "titles") return t.titlesBody;
+  if (id === "pricing") return t.pricingBody;
   return t.savesBody;
 }
 
@@ -272,7 +275,7 @@ export function HomeHub() {
             <p className="panel mt-4 rounded-xl px-5 py-8 text-muted">{t.empty}</p>
           )}
 
-          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {visible.map((tool) => {
               const Icon = toolIcon[tool.id];
               const on = active?.id === tool.id;
