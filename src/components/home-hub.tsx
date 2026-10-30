@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BadgePercent, Mail, Moon, Save, Search, Sun, UserRound } from "lucide-react";
-import { AVATAR_URL, normalizeMailbox, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
+import { ArrowUpRight, BadgePercent, Mail, Moon, Save, Search, Sun, Ticket, UserRound } from "lucide-react";
+import { AVATAR_URL, CODES_URL, normalizeMailbox, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
 import { listInbox, readMail, type MailHeader } from "@/lib/mail";
 import { copy, detectLang, isLang, languageOptions, RTL, type Lang } from "@/lib/messages";
 
@@ -10,6 +10,7 @@ type Session = { email: string; password: string };
 const toolIcon = {
   avatar: UserRound,
   titles: Search,
+  codes: Ticket,
   saves: Save,
   pricing: BadgePercent,
 } as const;
@@ -18,6 +19,7 @@ function toolName(lang: Lang, id: ToolId) {
   const t = copy[lang];
   if (id === "avatar") return t.avatarName;
   if (id === "titles") return t.titlesName;
+  if (id === "codes") return t.codesName;
   if (id === "pricing") return t.pricingName;
   return t.savesName;
 }
@@ -26,13 +28,22 @@ function toolBody(lang: Lang, id: ToolId) {
   const t = copy[lang];
   if (id === "avatar") return t.avatarBody;
   if (id === "titles") return t.titlesBody;
+  if (id === "codes") return t.codesBody;
   if (id === "pricing") return t.pricingBody;
   return t.savesBody;
 }
 
 function toolUrl(id: ToolId) {
   if (id === "titles") return TITLE_URL;
+  if (id === "codes") return CODES_URL;
   return AVATAR_URL;
+}
+
+function openLabel(lang: Lang, id: ToolId) {
+  const t = copy[lang];
+  if (id === "titles") return t.titlesOpen;
+  if (id === "codes") return t.codesOpen;
+  return t.openTool;
 }
 
 function applyLang(next: Lang) {
@@ -275,7 +286,7 @@ export function HomeHub() {
             <p className="panel mt-4 rounded-xl px-5 py-8 text-muted">{t.empty}</p>
           )}
 
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {visible.map((tool) => {
               const Icon = toolIcon[tool.id];
               const on = active?.id === tool.id;
@@ -362,7 +373,7 @@ function ToolDetail({ lang, id, status }: { lang: Lang; id: ToolId; status: Tool
               href={toolUrl(id)}
               className="mt-5 inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-4 font-medium text-accent-fg"
             >
-              {id === "titles" ? t.titlesOpen : t.openTool}
+              {openLabel(lang, id)}
               <ArrowUpRight className="size-4" />
             </a>
           ) : (

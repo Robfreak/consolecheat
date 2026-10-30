@@ -3,6 +3,7 @@ const shared = {
   mailKicker: "Webmail",
   avatarName: "Avatar Adder",
   titlesName: "Title ID Finder",
+  codesName: "PSN Codes",
   savesName: "PS4 Saves",
   pricingName: "Anti Dynamic Pricing",
   moreSoon: "More soon",
@@ -87,6 +88,8 @@ type Text = {
   avatarBody: string;
   titlesBody: string;
   titlesOpen: string;
+  codesBody: string;
+  codesOpen: string;
   savesBody: string;
   pricingBody: string;
 };
@@ -137,6 +140,8 @@ const en: Text = {
   pricingBody: "Guides on how to take advantage of PlayStation dynamic pricing.",
   titlesBody: "Look up a PlayStation title ID.",
   titlesOpen: "Open Title ID Finder",
+  codesBody: "Codes anyone can redeem for PlayStation avatars and free add-ons.",
+  codesOpen: "Open PSN Codes",
 };
 
 function pack(text: Text): Copy {
@@ -189,6 +194,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Anleitungen, wie man das Dynamic Pricing der PlayStation ausnutzt.",
     titlesBody: "Eine PlayStation-Title-ID nachschlagen.",
     titlesOpen: "Zum Title ID Finder",
+    codesBody: "Codes, die jeder für PlayStation-Avatare und kostenlose Add-ons einlösen kann.",
+    codesOpen: "Zu den PSN-Codes",
   }),
   fr: pack({
     mailHint: "Uniquement @consolecheat.com. La connexion vérifie la boîte chez Purelymail. Le mot de passe n’est pas enregistré ici.",
@@ -234,6 +241,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Guides pour profiter du dynamic pricing PlayStation.",
     titlesBody: "Trouver le Title ID d’un jeu PlayStation.",
     titlesOpen: "Ouvrir le Title ID Finder",
+    codesBody: "Codes que tout le monde peut utiliser pour des avatars PlayStation et des contenus gratuits.",
+    codesOpen: "Ouvrir les codes PSN",
   }),
   es: pack({
     mailHint: "Solo @consolecheat.com. El acceso comprueba el buzón en Purelymail. La contraseña no se guarda aquí.",
@@ -279,6 +288,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Guías para aprovechar el dynamic pricing de PlayStation.",
     titlesBody: "Buscar el Title ID de un juego de PlayStation.",
     titlesOpen: "Abrir Title ID Finder",
+    codesBody: "Códigos que cualquiera puede canjear para avatares de PlayStation y extras gratis.",
+    codesOpen: "Abrir códigos PSN",
   }),
   pt: pack({
     mailHint: "Apenas @consolecheat.com. A entrada verifica a caixa no Purelymail. A palavra-passe não fica guardada aqui.",
@@ -324,6 +335,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Guias para aproveitar o dynamic pricing da PlayStation.",
     titlesBody: "Procurar o Title ID de um jogo PlayStation.",
     titlesOpen: "Abrir Title ID Finder",
+    codesBody: "Códigos que qualquer pessoa pode resgatar para avatares PlayStation e extras grátis.",
+    codesOpen: "Abrir códigos PSN",
   }),
   it: pack({
     mailHint: "Solo @consolecheat.com. L’accesso controlla la casella su Purelymail. La password non viene salvata qui.",
@@ -369,6 +382,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Guide per sfruttare il dynamic pricing di PlayStation.",
     titlesBody: "Cercare il Title ID di un gioco PlayStation.",
     titlesOpen: "Apri Title ID Finder",
+    codesBody: "Codici che chiunque può riscattare per avatar PlayStation e contenuti gratis.",
+    codesOpen: "Apri i codici PSN",
   }),
   nl: pack({
     mailHint: "Alleen @consolecheat.com. Inloggen controleert de mailbox bij Purelymail. Het wachtwoord wordt hier niet bewaard.",
@@ -414,6 +429,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Gidsen om PlayStation dynamic pricing te gebruiken.",
     titlesBody: "Een PlayStation Title ID opzoeken.",
     titlesOpen: "Naar Title ID Finder",
+    codesBody: "Codes die iedereen kan inwisselen voor PlayStation-avatars en gratis extra’s.",
+    codesOpen: "Naar PSN-codes",
   }),
   pl: pack({
     mailHint: "Tylko @consolecheat.com. Logowanie sprawdza skrzynkę w Purelymail. Hasło nie jest tu zapisywane.",
@@ -459,6 +476,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Poradniki, jak wykorzystać dynamic pricing na PlayStation.",
     titlesBody: "Sprawdź Title ID gry na PlayStation.",
     titlesOpen: "Otwórz Title ID Finder",
+    codesBody: "Kody, które każdy może zrealizować na awatary PlayStation i darmowe dodatki.",
+    codesOpen: "Otwórz kody PSN",
   }),
   sv: pack({
     mailHint: "Bara @consolecheat.com. Inloggningen kontrollerar brevlådan hos Purelymail. Lösenordet sparas inte här.",
@@ -504,6 +523,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Guider för att utnyttja PlayStations dynamic pricing.",
     titlesBody: "Slå upp ett Title ID för PlayStation.",
     titlesOpen: "Öppna Title ID Finder",
+    codesBody: "Koder som alla kan lösa in för PlayStation-avatarer och gratis tillägg.",
+    codesOpen: "Öppna PSN-koder",
   }),
   da: pack({
     mailHint: "Kun @consolecheat.com. Login tjekker postkassen hos Purelymail. Adgangskoden gemmes ikke her.",
@@ -549,6 +570,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Guider til at udnytte PlayStations dynamic pricing.",
     titlesBody: "Slå et PlayStation Title ID op.",
     titlesOpen: "Åbn Title ID Finder",
+    codesBody: "Koder som alle kan indløse til PlayStation-avatarer og gratis tilføjelser.",
+    codesOpen: "Åbn PSN-koder",
   }),
   no: pack({
     mailHint: "Bare @consolecheat.com. Innlogging sjekker postkassen hos Purelymail. Passordet lagres ikke her.",
@@ -594,6 +617,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Guider for å utnytte PlayStations dynamic pricing.",
     titlesBody: "Slå opp en PlayStation Title ID.",
     titlesOpen: "Åpne Title ID Finder",
+    codesBody: "Koder som alle kan løse inn for PlayStation-avatarer og gratis tillegg.",
+    codesOpen: "Åpne PSN-koder",
   }),
   fi: pack({
     mailHint: "Vain @consolecheat.com. Kirjautuminen tarkistaa postilaatikon Purelymailissa. Salasanaa ei tallenneta tänne.",
@@ -639,6 +664,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Ohjeet PlayStationin dynamic pricingin hyödyntämiseen.",
     titlesBody: "Hae PlayStation-pelin Title ID.",
     titlesOpen: "Avaa Title ID Finder",
+    codesBody: "Koodeja, jotka kuka tahansa voi lunastaa PlayStation-avatareihin ja ilmaisiin lisäosiin.",
+    codesOpen: "Avaa PSN-koodit",
   }),
   cs: pack({
     mailHint: "Jen @consolecheat.com. Přihlášení ověří schránku u Purelymail. Heslo se sem neukládá.",
@@ -684,6 +711,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Návody, jak využít dynamic pricing na PlayStation.",
     titlesBody: "Vyhledat Title ID hry na PlayStation.",
     titlesOpen: "Otevřít Title ID Finder",
+    codesBody: "Kódy, které může kdokoli uplatnit na avatary PlayStation a doplňky zdarma.",
+    codesOpen: "Otevřít PSN kódy",
   }),
   sk: pack({
     mailHint: "Len @consolecheat.com. Prihlásenie overí schránku v Purelymail. Heslo sa sem neukladá.",
@@ -729,6 +758,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Návody, ako využiť dynamic pricing na PlayStation.",
     titlesBody: "Vyhľadať Title ID hry na PlayStation.",
     titlesOpen: "Otvoriť Title ID Finder",
+    codesBody: "Kódy, ktoré môže ktokoľvek uplatniť na avatary PlayStation a doplnky zadarmo.",
+    codesOpen: "Otvoriť PSN kódy",
   }),
   hu: pack({
     mailHint: "Csak @consolecheat.com. A belépés a Purelymail-postafiókot ellenőrzi. A jelszó itt nem tárolódik.",
@@ -774,6 +805,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Útmutatók a PlayStation dynamic pricing kihasználásához.",
     titlesBody: "PlayStation Title ID keresése.",
     titlesOpen: "Title ID Finder megnyitása",
+    codesBody: "Kódok, amelyeket bárki beválthat PlayStation-avatarokra és ingyenes tartalomra.",
+    codesOpen: "PSN-kódok megnyitása",
   }),
   ro: pack({
     mailHint: "Doar @consolecheat.com. Autentificarea verifică căsuța la Purelymail. Parola nu se salvează aici.",
@@ -819,6 +852,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Ghiduri ca să folosești dynamic pricing pe PlayStation.",
     titlesBody: "Caută Title ID-ul unui joc PlayStation.",
     titlesOpen: "Deschide Title ID Finder",
+    codesBody: "Coduri pe care oricine le poate folosi pentru avataruri PlayStation și extra gratuite.",
+    codesOpen: "Deschide codurile PSN",
   }),
   bg: pack({
     mailHint: "Само @consolecheat.com. Входът проверява пощенската кутия в Purelymail. Паролата не се пази тук.",
@@ -864,6 +899,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Ръководства как да се използва dynamic pricing в PlayStation.",
     titlesBody: "Намери Title ID на игра за PlayStation.",
     titlesOpen: "Отвори Title ID Finder",
+    codesBody: "Кодове, които всеки може да активира за аватари и безплатни добавки в PlayStation.",
+    codesOpen: "Отвори PSN кодове",
   }),
   hr: pack({
     mailHint: "Samo @consolecheat.com. Prijava provjerava sandučić na Purelymailu. Lozinka se ovdje ne sprema.",
@@ -909,6 +946,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Vodiči kako iskoristiti dynamic pricing na PlayStationu.",
     titlesBody: "Pronađi Title ID igre za PlayStation.",
     titlesOpen: "Otvori Title ID Finder",
+    codesBody: "Kodovi koje svatko može iskoristiti za PlayStation avatare i besplatne dodatke.",
+    codesOpen: "Otvori PSN kodove",
   }),
   el: pack({
     mailHint: "Μόνο @consolecheat.com. Η σύνδεση ελέγχει το γραμματοκιβώτιο στην Purelymail. Ο κωδικός δεν αποθηκεύεται εδώ.",
@@ -954,6 +993,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Οδηγοί για να εκμεταλλευτείς το dynamic pricing του PlayStation.",
     titlesBody: "Βρες το Title ID ενός παιχνιδιού PlayStation.",
     titlesOpen: "Άνοιγμα Title ID Finder",
+    codesBody: "Κωδικοί που μπορεί να εξαργυρώσει ο καθένας για avatar PlayStation και δωρεάν πρόσθετα.",
+    codesOpen: "Άνοιγμα κωδικών PSN",
   }),
   tr: pack({
     mailHint: "Yalnızca @consolecheat.com. Giriş, Purelymail kutusunu kontrol eder. Parola burada saklanmaz.",
@@ -999,6 +1040,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "PlayStation dynamic pricing’den yararlanma rehberleri.",
     titlesBody: "Bir PlayStation Title ID’si bul.",
     titlesOpen: "Title ID Finder’ı aç",
+    codesBody: "Herkesin PlayStation avatarları ve ücretsiz eklentiler için kullanabileceği kodlar.",
+    codesOpen: "PSN kodlarını aç",
   }),
   ru: pack({
     mailHint: "Только @consolecheat.com. Вход проверяет ящик в Purelymail. Пароль здесь не хранится.",
@@ -1044,6 +1087,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Инструкции, как использовать dynamic pricing в PlayStation.",
     titlesBody: "Найти Title ID игры для PlayStation.",
     titlesOpen: "Открыть Title ID Finder",
+    codesBody: "Коды, которые каждый может активировать для аватаров PlayStation и бесплатных дополнений.",
+    codesOpen: "Открыть коды PSN",
   }),
   uk: pack({
     mailHint: "Лише @consolecheat.com. Вхід перевіряє скриньку в Purelymail. Пароль тут не зберігається.",
@@ -1089,6 +1134,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Інструкції, як скористатися dynamic pricing у PlayStation.",
     titlesBody: "Знайти Title ID гри для PlayStation.",
     titlesOpen: "Відкрити Title ID Finder",
+    codesBody: "Коди, які кожен може активувати для аватарів PlayStation і безкоштовних додатків.",
+    codesOpen: "Відкрити коди PSN",
   }),
   ar: pack({
     mailHint: "فقط @consolecheat.com. تسجيل الدخول يتحقق من صندوق Purelymail. كلمة السر لا تُحفظ هنا.",
@@ -1134,6 +1181,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "شروحات للاستفادة من التسعير المتغير في بلايستيشن.",
     titlesBody: "ابحث عن Title ID للعبة بلايستيشن.",
     titlesOpen: "افتح Title ID Finder",
+    codesBody: "أكواد يمكن لأي شخص استخدامها لأفاتارات بلايستيشن وإضافات مجانية.",
+    codesOpen: "افتح أكواد PSN",
   }),
   he: pack({
     mailHint: "רק @consolecheat.com. ההתחברות בודקת את התיבה ב-Purelymail. הסיסמה לא נשמרת כאן.",
@@ -1179,6 +1228,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "מדריכים איך לנצל את התמחור הדינמי בפלייסטיישן.",
     titlesBody: "חיפוש Title ID של משחק פלייסטיישן.",
     titlesOpen: "פתיחת Title ID Finder",
+    codesBody: "קודים שכל אחד יכול לממש לאווטארים ותוספות חינם בפלייסטיישן.",
+    codesOpen: "פתיחת קודי PSN",
   }),
   ja: pack({
     mailHint: "@consolecheat.com だけ。ログインは Purelymail のメールボックスを確認します。パスワードはここへ保存しません。",
@@ -1224,6 +1275,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "PlayStation のダイナミックプライシングを使う手順。",
     titlesBody: "PlayStation の Title ID を調べる。",
     titlesOpen: "Title ID Finder を開く",
+    codesBody: "誰でも使えるPlayStationのアバターと無料追加コンテンツのコード。",
+    codesOpen: "PSNコードを開く",
   }),
   ko: pack({
     mailHint: "@consolecheat.com 만 됩니다. 로그인은 Purelymail 사서함을 확인합니다. 비밀번호는 여기에 저장하지 않습니다.",
@@ -1269,6 +1322,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "PlayStation 다이내믹 프라이싱을 활용하는 안내.",
     titlesBody: "PlayStation Title ID를 찾습니다.",
     titlesOpen: "Title ID Finder 열기",
+    codesBody: "누구나 쓸 수 있는 PlayStation 아바타와 무료 추가 콘텐츠 코드.",
+    codesOpen: "PSN 코드 열기",
   }),
   zh: pack({
     mailHint: "仅限 @consolecheat.com。登录会向 Purelymail 核对邮箱。密码不会保存在这里。",
@@ -1314,6 +1369,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "利用 PlayStation 动态定价的说明。",
     titlesBody: "查找 PlayStation 游戏的 Title ID。",
     titlesOpen: "打开 Title ID Finder",
+    codesBody: "谁都能兑换的 PlayStation 头像和免费附加内容兑换码。",
+    codesOpen: "打开 PSN 兑换码",
   }),
   "zh-Hant": pack({
     mailHint: "只限 @consolecheat.com。登入會向 Purelymail 核對信箱。密碼不會留在這裡。",
@@ -1359,6 +1416,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "利用 PlayStation 動態定價的說明。",
     titlesBody: "查找 PlayStation 遊戲的 Title ID。",
     titlesOpen: "開啟 Title ID Finder",
+    codesBody: "誰都能兌換的 PlayStation 頭像和免費附加內容兌換碼。",
+    codesOpen: "開啟 PSN 兌換碼",
   }),
   th: pack({
     mailHint: "เฉพาะ @consolecheat.com เข้าสู่ระบบจะตรวจกล่องที่ Purelymail รหัสผ่านไม่ถูกเก็บที่นี่",
@@ -1404,6 +1463,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "วิธีใช้ dynamic pricing ของ PlayStation",
     titlesBody: "ค้น Title ID ของเกม PlayStation",
     titlesOpen: "เปิด Title ID Finder",
+    codesBody: "โค้ดที่ใครก็ใช้ได้สำหรับอวตาร PlayStation และของแถมฟรี",
+    codesOpen: "เปิดโค้ด PSN",
   }),
   id: pack({
     mailHint: "Hanya @consolecheat.com. Masuk memeriksa kotak di Purelymail. Kata sandi tidak disimpan di sini.",
@@ -1449,6 +1510,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Panduan memakai dynamic pricing PlayStation.",
     titlesBody: "Cari Title ID permainan PlayStation.",
     titlesOpen: "Buka Title ID Finder",
+    codesBody: "Kode yang siapa saja bisa tukar untuk avatar PlayStation dan tambahan gratis.",
+    codesOpen: "Buka kode PSN",
   }),
   ms: pack({
     mailHint: "Hanya @consolecheat.com. Log masuk menyemak peti di Purelymail. Kata laluan tidak disimpan di sini.",
@@ -1494,6 +1557,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Panduan menggunakan dynamic pricing PlayStation.",
     titlesBody: "Cari Title ID permainan PlayStation.",
     titlesOpen: "Buka Title ID Finder",
+    codesBody: "Kod yang sesiapa boleh tebus untuk avatar PlayStation dan tambahan percuma.",
+    codesOpen: "Buka kod PSN",
   }),
   vi: pack({
     mailHint: "Chỉ @consolecheat.com. Đăng nhập kiểm tra hộp thư trên Purelymail. Mật khẩu không được lưu ở đây.",
@@ -1539,6 +1604,8 @@ export const copy: Record<Lang, Copy> = {
     pricingBody: "Hướng dẫn tận dụng dynamic pricing trên PlayStation.",
     titlesBody: "Tra Title ID của game PlayStation.",
     titlesOpen: "Mở Title ID Finder",
+    codesBody: "Mã ai cũng dùng được cho avatar PlayStation và nội dung miễn phí.",
+    codesOpen: "Mở mã PSN",
   }),
 };
 
