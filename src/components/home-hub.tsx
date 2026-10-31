@@ -324,6 +324,11 @@ export function HomeHub() {
           <p className="text-fg">{t.freeClaim}</p>
           <p>{t.privacyClaim}</p>
           <p>{t.footerNote}</p>
+          <p>
+            <a href="/tos" className="text-steel underline-offset-4 hover:underline">
+              {t.tosLink}
+            </a>
+          </p>
         </div>
       </footer>
     </div>

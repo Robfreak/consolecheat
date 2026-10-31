@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TosRouteImport } from './routes/tos'
 import { Route as ApiMailRouteImport } from './routes/api/mail'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TosRoute = TosRouteImport.update({
+  id: '/tos',
+  path: '/tos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiMailRoute = ApiMailRouteImport.update({
@@ -25,27 +31,31 @@ const ApiMailRoute = ApiMailRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/tos': typeof TosRoute
   '/api/mail': typeof ApiMailRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/tos': typeof TosRoute
   '/api/mail': typeof ApiMailRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/tos': typeof TosRoute
   '/api/mail': typeof ApiMailRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/mail'
+  fullPaths: '/' | '/tos' | '/api/mail'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/mail'
-  id: '__root__' | '/' | '/api/mail'
+  to: '/' | '/tos' | '/api/mail'
+  id: '__root__' | '/' | '/tos' | '/api/mail'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TosRoute: typeof TosRoute
   ApiMailRoute: typeof ApiMailRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tos': {
+      id: '/tos'
+      path: '/tos'
+      fullPath: '/tos'
+      preLoaderRoute: typeof TosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/mail': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TosRoute: TosRoute,
   ApiMailRoute: ApiMailRoute,
 }
 export const routeTree = rootRouteImport
