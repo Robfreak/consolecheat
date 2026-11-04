@@ -51,8 +51,9 @@
     background-color: var(--color-bg);
     color: var(--color-fg);
     background-image:
-      radial-gradient(920px 460px at 12% -12%, color-mix(in srgb, var(--color-accent) 42%, transparent), transparent 62%),
-      radial-gradient(680px 380px at 100% 0%, color-mix(in srgb, var(--color-steel) 18%, transparent), transparent 58%);
+      radial-gradient(1100px 520px at 8% -18%, color-mix(in srgb, var(--color-accent) 48%, transparent), transparent 60%),
+      radial-gradient(720px 420px at 100% -8%, color-mix(in srgb, var(--color-steel) 22%, transparent), transparent 56%),
+      linear-gradient(180deg, transparent, color-mix(in srgb, var(--color-bg) 30%, #000) 100%);
     background-attachment: fixed;
   }
 
@@ -76,13 +77,55 @@
   .panel {
     border: 1px solid var(--color-line);
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--color-fg) 5%, transparent), transparent 38%),
+      linear-gradient(180deg, color-mix(in srgb, var(--color-fg) 6%, transparent), transparent 42%),
       var(--color-surface);
     box-shadow: 0 22px 44px -34px #0000008c;
   }
 
-  .mark-selected {
-    box-shadow: inset 0 2px 0 var(--color-accent);
+  .tool-card {
+    transition:
+      transform 160ms ease,
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-steel) 50%, var(--color-line));
+  }
+
+  .tool-card[aria-pressed="true"] {
+    border-color: var(--color-accent);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 52%),
+      var(--color-surface);
+    box-shadow:
+      inset 0 0 0 1px var(--color-accent),
+      0 18px 36px -28px color-mix(in srgb, var(--color-accent) 70%, transparent);
+  }
+
+  .claim {
+    position: relative;
+    padding-inline-start: 1.15rem;
+  }
+
+  .claim::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.85rem;
+    top: 0.95rem;
+    bottom: 0.95rem;
+    width: 3px;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
+  .cta {
+    box-shadow: 0 12px 24px -16px color-mix(in srgb, var(--color-accent) 90%, #000);
+  }
+
+  .cta:hover {
+    filter: brightness(1.08);
   }
 
   .eyebrow {
@@ -100,5 +143,9 @@
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+
+  .tool-card:hover {
+    transform: none;
   }
 }

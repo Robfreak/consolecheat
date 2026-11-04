@@ -191,7 +191,7 @@ export function HomeHub() {
           </div>
         </div>
       ) : null}
-      <header className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-line bg-bg/75 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <a href="#tools" className="flex min-w-0 items-center gap-3">
             <Mark />
@@ -239,22 +239,22 @@ export function HomeHub() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
         <p className="eyebrow text-xs font-medium uppercase text-steel">{t.eyebrow}</p>
         <h1 className="display-title mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight sm:text-6xl">
           {t.title}
         </h1>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{t.lede}</p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <p className="panel rounded-xl px-4 py-4 text-base font-medium leading-relaxed text-fg">{t.freeClaim}</p>
-          <p className="panel rounded-xl px-4 py-4 text-base font-medium leading-relaxed text-fg">{t.privacyClaim}</p>
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{t.lede}</p>
+        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+          <p className="claim panel rounded-xl px-4 py-4 ps-6 text-base font-medium leading-relaxed text-fg">{t.freeClaim}</p>
+          <p className="claim panel rounded-xl px-4 py-4 ps-6 text-base font-medium leading-relaxed text-fg">{t.privacyClaim}</p>
         </div>
         <p className="mt-4 text-sm text-subtle">{t.unofficial}</p>
 
-        <section id="tools" className="mt-10 scroll-mt-28">
+        <section id="tools" className="mt-14 scroll-mt-28">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="font-display text-2xl font-semibold tracking-tight">{t.toolsHeading}</h2>
-            <div className="flex flex-wrap gap-2" role="group" aria-label={t.toolsHeading}>
+            <div className="flex flex-wrap gap-1 rounded-xl border border-line bg-surface p-1" role="group" aria-label={t.toolsHeading}>
               {(
                 [
                   ["all", t.filterAll],
@@ -268,10 +268,8 @@ export function HomeHub() {
                   aria-pressed={filter === id}
                   onClick={() => setFilter(id)}
                   className={
-                    "h-11 rounded-lg border px-4 text-sm font-medium " +
-                    (filter === id
-                      ? "border-accent bg-accent text-accent-fg"
-                      : "border-line bg-surface text-fg")
+                    "h-10 rounded-lg px-4 text-sm font-medium " +
+                    (filter === id ? "bg-accent text-accent-fg" : "text-fg")
                   }
                 >
                   {label}
@@ -296,10 +294,7 @@ export function HomeHub() {
                     type="button"
                     onClick={() => setSelected(tool.id)}
                     aria-pressed={on}
-                    className={
-                      "panel flex h-full w-full flex-col items-start gap-3 rounded-xl p-4 text-left " +
-                      (on ? "mark-selected" : "")
-                    }
+                    className="tool-card panel flex h-full w-full flex-col items-start gap-3 rounded-xl p-4 text-left"
                   >
                     <span className="flex w-full items-center justify-between gap-3">
                       <span className="inline-flex size-11 items-center justify-center rounded-lg bg-raised text-steel">
@@ -318,17 +313,17 @@ export function HomeHub() {
         </section>
       </main>
 
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm leading-relaxed text-subtle sm:px-6">
-          <p className="text-fg">{t.brand}</p>
-          <p className="text-fg">{t.freeClaim}</p>
-          <p>{t.privacyClaim}</p>
-          <p>{t.footerNote}</p>
-          <p>
-            <a href="/tos" className="text-steel underline-offset-4 hover:underline">
-              {t.tosLink}
-            </a>
-          </p>
+      <footer className="mt-8 border-t border-line">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm leading-relaxed text-subtle sm:flex-row sm:items-end sm:justify-between sm:px-6">
+          <div className="flex max-w-2xl flex-col gap-2">
+            <p className="font-display text-base font-semibold text-fg">{t.brand}</p>
+            <p className="text-fg">{t.freeClaim}</p>
+            <p>{t.privacyClaim}</p>
+            <p>{t.footerNote}</p>
+          </div>
+          <a href="/tos" className="text-steel underline-offset-4 hover:underline">
+            {t.tosLink}
+          </a>
         </div>
       </footer>
     </div>
@@ -338,9 +333,9 @@ export function HomeHub() {
 function Mark() {
   return (
     <svg viewBox="0 0 32 32" className="size-9 shrink-0" aria-hidden="true">
-      <rect width="32" height="32" rx="8" className="fill-raised" />
-      <circle cx="16" cy="12" r="5" className="fill-steel" />
-      <path d="M7 27c1.4-6 4.5-8.4 9-8.4S23.6 21 25 27H7z" className="fill-fg" />
+      <rect width="32" height="32" rx="8" className="fill-accent" />
+      <circle cx="16" cy="12" r="5" className="fill-white" />
+      <path d="M7 27c1.4-6 4.5-8.4 9-8.4S23.6 21 25 27H7z" className="fill-white/80" />
     </svg>
   );
 }
@@ -349,10 +344,11 @@ function StatusPill({ status, label }: { status: ToolStatus; label: string }) {
   return (
     <span
       className={
-        "rounded-md px-2 py-1 text-xs font-medium " +
+        "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium " +
         (status === "live" ? "bg-raised text-ok" : "bg-raised text-warn")
       }
     >
+      <span className={"size-1.5 rounded-full " + (status === "live" ? "bg-ok" : "bg-warn")} />
       {label}
     </span>
   );
@@ -376,7 +372,7 @@ function ToolDetail({ lang, id, status }: { lang: Lang; id: ToolId; status: Tool
           {status === "live" ? (
             <a
               href={toolUrl(id)}
-              className="mt-5 inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-4 font-medium text-accent-fg"
+              className="cta mt-5 inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-4 font-medium text-accent-fg"
             >
               {openLabel(lang, id)}
               <ArrowUpRight className="size-4" />
