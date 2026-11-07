@@ -309,6 +309,17 @@ export function HomeHub() {
               );
             })}
           </ul>
+          <nav className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm" aria-label={t.toolsHeading}>
+            <a href={AVATAR_URL} className="text-steel underline-offset-4 hover:underline">
+              {t.avatarName}
+            </a>
+            <a href={CODES_URL} className="text-steel underline-offset-4 hover:underline">
+              {t.codesName}
+            </a>
+            <a href={TITLE_URL} className="text-steel underline-offset-4 hover:underline">
+              {t.titlesName}
+            </a>
+          </nav>
           <p className="mt-4 text-sm text-subtle">{t.moreSoon}</p>
         </section>
       </main>

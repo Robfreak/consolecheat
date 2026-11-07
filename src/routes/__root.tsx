@@ -10,11 +10,11 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "consolecheat" },
+      { title: "consolecheat · PSN avatars, codes and title IDs" },
       {
         name: "description",
         content:
-          "Hub für PSN-Werkzeuge. Der Avatar Adder ist das erste. Webmail für Adressen von consolecheat.com über Purelymail.",
+          "Free PlayStation Network tools. Add PSN avatars to the official cart, redeem avatar codes, and look up PS4 and PS5 title IDs. Not Sony.",
       },
       { name: "theme-color", content: "#07090e" },
     ],
