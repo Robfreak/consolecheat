@@ -34,6 +34,12 @@ const jsonLd = {
         {
           "@type": "ListItem",
           position: 3,
+          name: "Free PS Games",
+          url: "https://free.consolecheat.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
           name: "PlayStation Title ID Finder",
           url: "https://title-id-finder.consolecheat.com/",
         },

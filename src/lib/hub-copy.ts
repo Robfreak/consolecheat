@@ -1,15 +1,17 @@
-export type ToolId = "avatar" | "titles" | "codes" | "saves" | "pricing";
+export type ToolId = "avatar" | "titles" | "codes" | "free" | "saves" | "pricing";
 export type ToolStatus = "live" | "soon";
 
 export const AVATAR_URL = "https://avatar.consolecheat.com/";
 export const TITLE_URL = "https://title-id-finder.consolecheat.com/";
 export const CODES_URL = "https://codes.consolecheat.com/";
+export const FREE_URL = "https://free.consolecheat.com/";
 export const MAIL_DOMAIN = "consolecheat.com";
 
 export const tools: { id: ToolId; status: ToolStatus }[] = [
   { id: "avatar", status: "live" },
   { id: "titles", status: "live" },
   { id: "codes", status: "live" },
+  { id: "free", status: "live" },
   { id: "saves", status: "soon" },
   { id: "pricing", status: "soon" },
 ];

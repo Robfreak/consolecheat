@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BadgePercent, Mail, Moon, Save, Search, Sun, Ticket, UserRound } from "lucide-react";
-import { AVATAR_URL, CODES_URL, normalizeMailbox, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
+import { ArrowUpRight, BadgePercent, Gift, Mail, Moon, Save, Search, Sun, Ticket, UserRound } from "lucide-react";
+import { AVATAR_URL, CODES_URL, FREE_URL, normalizeMailbox, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
 import { listInbox, readMail, type MailHeader } from "@/lib/mail";
 import { copy, detectLang, isLang, languageOptions, RTL, type Lang } from "@/lib/messages";
 
@@ -11,6 +11,7 @@ const toolIcon = {
   avatar: UserRound,
   titles: Search,
   codes: Ticket,
+  free: Gift,
   saves: Save,
   pricing: BadgePercent,
 } as const;
@@ -20,6 +21,7 @@ function toolName(lang: Lang, id: ToolId) {
   if (id === "avatar") return t.avatarName;
   if (id === "titles") return t.titlesName;
   if (id === "codes") return t.codesName;
+  if (id === "free") return t.freeName;
   if (id === "pricing") return t.pricingName;
   return t.savesName;
 }
@@ -29,6 +31,7 @@ function toolBody(lang: Lang, id: ToolId) {
   if (id === "avatar") return t.avatarBody;
   if (id === "titles") return t.titlesBody;
   if (id === "codes") return t.codesBody;
+  if (id === "free") return t.freeBody;
   if (id === "pricing") return t.pricingBody;
   return t.savesBody;
 }
@@ -36,6 +39,7 @@ function toolBody(lang: Lang, id: ToolId) {
 function toolUrl(id: ToolId) {
   if (id === "titles") return TITLE_URL;
   if (id === "codes") return CODES_URL;
+  if (id === "free") return FREE_URL;
   return AVATAR_URL;
 }
 
@@ -43,6 +47,7 @@ function openLabel(lang: Lang, id: ToolId) {
   const t = copy[lang];
   if (id === "titles") return t.titlesOpen;
   if (id === "codes") return t.codesOpen;
+  if (id === "free") return t.freeOpen;
   return t.openTool;
 }
 
@@ -315,6 +320,9 @@ export function HomeHub() {
             </a>
             <a href={CODES_URL} className="text-steel underline-offset-4 hover:underline">
               {t.codesName}
+            </a>
+            <a href={FREE_URL} className="text-steel underline-offset-4 hover:underline">
+              {t.freeName}
             </a>
             <a href={TITLE_URL} className="text-steel underline-offset-4 hover:underline">
               {t.titlesName}
