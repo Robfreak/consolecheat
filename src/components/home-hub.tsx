@@ -342,13 +342,7 @@ export function HomeHub() {
 }
 
 function Mark() {
-  return (
-    <svg viewBox="0 0 32 32" className="size-9 shrink-0" aria-hidden="true">
-      <rect width="32" height="32" rx="8" className="fill-accent" />
-      <circle cx="16" cy="12" r="5" className="fill-white" />
-      <path d="M7 27c1.4-6 4.5-8.4 9-8.4S23.6 21 25 27H7z" className="fill-white/80" />
-    </svg>
-  );
+  return <img src="/logo.png" alt="" className="size-10 shrink-0 rounded-lg object-cover" />;
 }
 
 function StatusPill({ status, label }: { status: ToolStatus; label: string }) {

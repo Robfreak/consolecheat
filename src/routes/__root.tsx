@@ -19,7 +19,7 @@ export const Route = createRootRoute({
       { name: "theme-color", content: "#07090e" },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/png", href: "/logo.png" },
       { rel: "stylesheet", href: appCss },
       {
         rel: "stylesheet",
