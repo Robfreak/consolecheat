@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BadgePercent, Gift, Mail, Moon, Save, Search, Sun, Ticket, UserRound } from "lucide-react";
-import { AVATAR_URL, CODES_URL, FREE_URL, normalizeMailbox, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
+import { ArrowUpRight, BadgePercent, Gift, Mail, Moon, Save, Search, Store, Sun, Ticket, UserRound } from "lucide-react";
+import { AVATAR_URL, CODES_URL, FREE_URL, normalizeMailbox, STORE_URL, TITLE_URL, tools, type ToolId, type ToolStatus } from "@/lib/hub-copy";
 import { listInbox, readMail, type MailHeader } from "@/lib/mail";
 import { copy, detectLang, isLang, languageOptions, RTL, type Lang } from "@/lib/messages";
 
@@ -203,6 +203,13 @@ export function HomeHub() {
             <span className="truncate font-display text-lg font-semibold tracking-tight">{t.brand}</span>
           </a>
           <div className="flex items-center gap-2">
+            <a
+              href={STORE_URL}
+              className="inline-flex h-11 items-center gap-2 rounded-lg border border-line bg-surface px-3 text-sm font-medium text-fg"
+            >
+              <Store className="size-4 text-steel" />
+              {t.storeKicker}
+            </a>
             <button
               type="button"
               onClick={() => setMailOpen(true)}

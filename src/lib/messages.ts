@@ -1,6 +1,7 @@
 const shared = {
   brand: "consolecheat",
   mailKicker: "Webmail",
+  storeKicker: "Store",
   avatarName: "Avatar Adder",
   titlesName: "Title ID Finder",
   codesName: "PSN Codes",
