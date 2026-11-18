@@ -14,7 +14,7 @@ export type MailListResult =
   | { ok: false; error: "domain" | "auth" | "down" };
 
 export type MailReadResult =
-  | { ok: true; from: string; subject: string; date: string; text: string }
+  | { ok: true; from: string; subject: string; date: string; text: string; html: string }
   | { ok: false; error: "domain" | "auth" | "down" };
 
 function clientFor(email: string, password: string) {
@@ -28,6 +28,40 @@ function clientFor(email: string, password: string) {
     greetingTimeout: 15000,
     socketTimeout: 20000,
   });
+}
+
+function asHtml(value: string) {
+  return value.replace(/\u0000/g, "").slice(0, 1_500_000);
+}
+
+function inlineCid(html: string, attachments: { cid?: string; contentType?: string; content: Buffer }[]) {
+  let out = html;
+  for (const file of attachments) {
+    if (!file.cid || !file.content || file.content.length > 800_000) continue;
+    const type = file.contentType || "application/octet-stream";
+    if (!type.startsWith("image/")) continue;
+    const data = `data:${type};base64,${file.content.toString("base64")}`;
+    const cid = file.cid.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    out = out.replace(new RegExp(`cid:${cid}`, "gi"), data);
+  }
+  return out;
+}
+
+function prepareHtml(html: string) {
+  return asHtml(html)
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+    .replace(/<object[\s\S]*?<\/object>/gi, "")
+    .replace(/<embed\b[^>]*>/gi, "")
+    .replace(/\son\w+\s*=\s*(['"])[\s\S]*?\1/gi, "")
+    .replace(/\son\w+\s*=\s*[^\s>]+/gi, "")
+    .replace(/javascript:/gi, "")
+    .replace(/<a\b([^>]*)>/gi, (_match, attrs: string) => {
+      const cleaned = attrs
+        .replace(/\starget\s*=\s*(['"])[\s\S]*?\1/gi, "")
+        .replace(/\srel\s*=\s*(['"])[\s\S]*?\1/gi, "");
+      return `<a${cleaned} target="_blank" rel="noopener noreferrer">`;
+    });
 }
 
 function asText(value: string) {
@@ -111,13 +145,16 @@ export async function readMessageImap(email: string, password: string, uid: numb
     if (!msg || !msg.source) return { ok: false as const, error: "down" as const };
     const parsed = await simpleParser(msg.source);
     const fromAddr = parsed.from?.value?.[0];
-    const text = asText(parsed.text?.trim() || (parsed.html ? htmlToText(parsed.html) : ""));
+    const rawHtml = typeof parsed.html === "string" ? parsed.html : "";
+    const html = rawHtml ? prepareHtml(inlineCid(rawHtml, parsed.attachments ?? [])) : "";
+    const text = asText(parsed.text?.trim() || (html ? htmlToText(html) : ""));
     return {
       ok: true as const,
       from: fromAddr?.name || fromAddr?.address || "",
       subject: parsed.subject || "",
       date: parsed.date ? parsed.date.toISOString() : "",
       text,
+      html,
     };
   });
   if ("messages" in result) return { ok: false, error: "down" };

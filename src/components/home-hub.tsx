@@ -75,6 +75,7 @@ export function HomeHub() {
   const [busy, setBusy] = useState(false);
   const [openUid, setOpenUid] = useState<number | null>(null);
   const [body, setBody] = useState("");
+  const [bodyHtml, setBodyHtml] = useState("");
   const [bodyBusy, setBodyBusy] = useState(false);
   const [mailOpen, setMailOpen] = useState(false);
 
@@ -125,6 +126,7 @@ export function HomeHub() {
       setMessages(result.messages);
       setOpenUid(null);
       setBody("");
+      setBodyHtml("");
     } catch {
       setMailError(t.mailDown);
     } finally {
@@ -136,6 +138,7 @@ export function HomeHub() {
     if (!session) return;
     setOpenUid(uid);
     setBody("");
+    setBodyHtml("");
     setBodyBusy(true);
     try {
       const result = await readMail(session.email, session.password, uid);
@@ -144,6 +147,7 @@ export function HomeHub() {
         return;
       }
       setBody(result.text);
+      setBodyHtml(result.html || "");
     } catch {
       setMailError(t.mailDown);
     } finally {
@@ -156,6 +160,7 @@ export function HomeHub() {
     setMessages([]);
     setOpenUid(null);
     setBody("");
+    setBodyHtml("");
     setMailError(null);
   }
 
@@ -173,7 +178,7 @@ export function HomeHub() {
             aria-label={t.mailKicker}
             tabIndex={-1}
             onMouseDown={(event) => event.stopPropagation()}
-            className="panel w-full max-w-xl rounded-xl outline-none"
+            className="panel w-full max-w-3xl rounded-xl outline-none"
           >
             <MailBar
               lang={lang}
@@ -183,6 +188,7 @@ export function HomeHub() {
               messages={messages}
               openUid={openUid}
               body={body}
+              bodyHtml={bodyHtml}
               bodyBusy={bodyBusy}
               onSignIn={signIn}
               onSignOut={signOut}
@@ -190,6 +196,7 @@ export function HomeHub() {
               onClose={() => {
                 setOpenUid(null);
                 setBody("");
+                setBodyHtml("");
               }}
               onDismiss={() => setMailOpen(false)}
             />
@@ -420,6 +427,16 @@ function ToolDetail({ lang, id, status }: { lang: Lang; id: ToolId; status: Tool
   );
 }
 
+function mailDocument(html: string) {
+  const extra =
+    '<meta name="viewport" content="width=device-width,initial-scale=1"><base target="_blank"><style>img,video{max-width:100%;height:auto}body{overflow-wrap:anywhere}</style>';
+  if (/<html[\s>]/i.test(html)) {
+    if (/<head[\s>]/i.test(html)) return html.replace(/<head([^>]*)>/i, `<head$1>${extra}`);
+    return html.replace(/<html([^>]*)>/i, `<html$1><head>${extra}</head>`);
+  }
+  return `<!doctype html><html><head><meta charset="utf-8">${extra}<style>html,body{margin:0;background:#fff;color:#1a1714;font:16px/1.45 sans-serif}</style></head><body>${html}</body></html>`;
+}
+
 function MailBar({
   lang,
   error,
@@ -428,6 +445,7 @@ function MailBar({
   messages,
   openUid,
   body,
+  bodyHtml,
   bodyBusy,
   onSignIn,
   onSignOut,
@@ -442,6 +460,7 @@ function MailBar({
   messages: MailHeader[];
   openUid: number | null;
   body: string;
+  bodyHtml: string;
   bodyBusy: boolean;
   onSignIn: (email: string, password: string) => void;
   onSignOut: () => void;
@@ -560,7 +579,18 @@ function MailBar({
                     </button>
                     {open ? (
                       <div className="border-t border-line px-3 py-3">
-                        {bodyBusy ? <p className="text-sm text-muted">…</p> : <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-fg">{body}</pre>}
+                        {bodyBusy ? (
+                          <p className="text-sm text-muted">…</p>
+                        ) : bodyHtml ? (
+                          <iframe
+                            title={message.subject || "Mail"}
+                            sandbox="allow-popups allow-popups-to-escape-sandbox"
+                            srcDoc={mailDocument(bodyHtml)}
+                            className="h-[28rem] w-full rounded-lg border border-line bg-white"
+                          />
+                        ) : (
+                          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-fg">{body}</pre>
+                        )}
                       </div>
                     ) : null}
                   </li>

@@ -12,7 +12,7 @@ export type MailListResult =
   | { ok: false; error: MailFailure };
 
 export type MailReadResult =
-  | { ok: true; from: string; subject: string; date: string; text: string }
+  | { ok: true; from: string; subject: string; date: string; text: string; html: string }
   | { ok: false; error: MailFailure };
 
 async function postMail(body: { action: "list" | "read"; email: string; password: string; uid?: number }) {
